@@ -1,12 +1,7 @@
-if(Meteor.startup(function(){
-  for (var i = 0; i < 20; i++) {
-    $("body").append(i);
-  }
-}));
 Template.loading.rendered = function () {
   if ( ! Session.get('loadingSplash') ) {
     this.loading = window.pleaseWait({
-      logo: '/images/Meteor-logo.png',
+      logo: 'logo.png',
       backgroundColor: '#7f8c8d',
       loadingHtml: message + spinner
     });
@@ -20,5 +15,5 @@ Template.loading.destroyed = function () {
   }
 };
 
-var message = '<p class="loading-message">Loading Message</p>';
-var spinner = '<div class="sk-spinner sk-spinner-rotating-plane"></div>';
+var message = '<p class="loading-message">Please wait...</p>';
+var spinner = '<div class="sk-cube-grid"><div class="sk-cube sk-cube1"></div><div class="sk-cube sk-cube2"></div><div class="sk-cube sk-cube3"></div><div class="sk-cube sk-cube4"></div><div class="sk-cube sk-cube5"></div><div class="sk-cube sk-cube6"></div><div class="sk-cube sk-cube7"></div><div class="sk-cube sk-cube8"></div><div class="sk-cube sk-cube9"></div></div>';
