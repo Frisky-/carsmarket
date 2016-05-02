@@ -1,12 +1,52 @@
 <template name="homeIndex">
   <div class="row">
-    <div class="col-md-3">
-      filters
+    <div class="col-md-2">
+      <div class="row">
+        <form class="">
+          <div class="col-md-6">
+            <div class="vehicleType">
+              <p>Vehicle Type</p>
+              <select class="form-control type" name="">
+                <option value="">all</option>
+                <option value="sedan">Sedan</option>
+                <option value="truck">Truck</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="asd">
+              <p>Type</p>
+              <select class="form-control" name="">
+                <option value="">all</option>
+                <option value="sedan">sedan</option>
+              </select>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary searchBtn">Search!</button>
+        </form>
+      </div>
     </div>
-    <div class="col-md-6">
-      ads
+    <div class="col-md-8">
+      <div class="row">
+        {{#each ads}}
+          <div class="col-md-4">
+            <div class="product">
+              <img class="productImage img-thumbnail img-responsive" src="{{image}}" alt="" />
+              <div class="productName">
+                <p class="text-center">{{name}}</p>
+              </div>
+              <div class="productYear">
+                <p>Year:{{year}}</p>
+              </div>
+              <div class="productPrice">
+                <p>Price: <i class="fa fa-money" aria-hidden="true"></i> {{price}}</p>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       featured
     </div>
   </div>

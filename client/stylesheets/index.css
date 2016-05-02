@@ -1,0 +1,14 @@
+.product{
+  border:1px solid black;
+  padding:5px;
+  margin: 5px;
+  background:white;
+  transition: background-color 0.5s;
+  box-shadow: rgb(25, 19, 19) 1px 1px 3px;
+}
+.product:hover{
+  background-color:#222222;
+}
+.product:hover p{
+  color:white;
+}
