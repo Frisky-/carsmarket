@@ -1,0 +1,68 @@
+<template name="filters">
+  <form class="filterForm" action="index.html" method="post">
+    <div class="col-md-6">
+      <div class="vehicleType">
+        <p>Type</p>
+          <select class="form-control type" name="">
+            <option value="">all</option>
+            <option value="Sedan">Sedan</option>
+            <option value="Truck">Truck</option>
+          </select>
+      </div>
+      <div class="vehicleTransmission">
+        <p>Transmission</p>
+          <select class="form-control transmission" name="">
+            <option value="">all</option>
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+          </select>
+      </div>
+      <div class="vehicleSpeeds">
+        <p>Number of speeds</p>
+          <select class="form-control speeds" name="">
+            <option value="">all</option>
+            <option value="3Spd">3Spd</option>
+            <option value="4Spd">4Spd</option>
+            <option value="5Spd">5Spd</option>
+            <option value="6Spd">6Spd</option>
+            <option value="7Spd">7Spd</option>
+            <option value="8Spd">8Spd</option>
+          </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="vehicleCondtion">
+        <p>Condition</p>
+        <select class="form-control condition" name="">
+          <option value="">all</option>
+          <option value="New">New</option>
+          <option value="Used">Used</option>
+        </select>
+      </div>
+      <div class="vehicleCylinders">
+        <p>Number of cylinders</p>
+        <select class="form-control cylinders" name="">
+          <option value="">all</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="8">8</option>
+          <option value="10">10</option>
+          <option value="12">12</option>
+          <option value="16">16</option>
+        </select>
+      </div>
+      <div class="vehicleFuel">
+        <p>Fuel type</p>
+        <select class="form-control fuel" name="">
+          <option value="">all</option>
+          <option value="petrol">petrol</option>
+          <option value="diesel">diesel</option>
+          <option value="gas">gas</option>
+          <option value="electric">electric</option>
+          <option value="hybrid">hybrid</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</template>
