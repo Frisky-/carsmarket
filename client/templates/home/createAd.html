@@ -1,0 +1,108 @@
+<template name="createAd">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="row">
+        <form class="createAdForm">
+          <div class="col-md-6 left">
+            <select class="brand form-control" name="">
+              <option selected disabled>Brand</option>
+              {{#each getMakes}}
+              <option value="{{name}}">{{name}}</option>
+              {{/each}}
+            </select>
+            <select class="model form-control" name="">
+              <option selected disabled>Model</option>
+              {{#each getModel}}
+              <option value="{{name}}">{{name}}</option>
+              {{/each}}
+            </select>
+            <select class="year form-control" name="">
+              <option selected disabled>Year</option>
+              {{#each getYear}}
+              <option value="{{year}}">{{year}}</option>
+              {{/each}}
+            </select>
+            <select class="styles form-control" name="">
+              <option selected disabled>Style</option>
+              {{#each getStyles}}
+              <option value="{{name}}">{{name}}</option>
+              {{/each}}
+            </select>
+            <select class="transmission form-control" name="">
+              <option selected disabled>Transmission</option>
+              <option value="Manual">Manual</option>
+              <option value="Automatic">Automatic</option>
+            </select>
+          </div>
+          <div class="col-md-6 right">
+            <select class="cylinders form-control" name="">
+              <option selected disabled>Cylinders</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="8">8</option>
+              <option value="10">10</option>
+              <option value="12">12</option>
+              <option value="16">16</option>
+            </select>
+            <select class="condition form-control" name="">
+              <option selected disabled>Condition</option>
+              <option value="New">New</option>
+              <option value="Used">Used</option>
+            </select>
+            <select class="miles form-control" name="">
+              <option selected disabled>Mileage</option>
+              <option value="15000">Under 15,000</option>
+              <option value="30000">Under 30,000</option>
+              <option value="45000">Under 45,000</option>
+              <option value="60000">Under 60,000</option>
+              <option value="75000">Under 75,000</option>
+              <option value="100000">Under 100,000</option>
+              <option value="150000">Under 150,000</option>
+              <option value="200000">Over 200,000</option>
+            </select>
+            <select class="fuel form-control" name="">
+              <option selected disabled>Fuel</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Gas">Gas</option>
+              <option value="Electric">Electric</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+            <select class="speeds form-control" name="">
+              <option selected disabled>Number Of Speeds</option>
+              <option value="3Spd">3Spd</option>
+              <option value="4Spd">4Spd</option>
+              <option value="5Spd">5Spd</option>
+              <option value="6Spd">6Spd</option>
+              <option value="7Spd">7Spd</option>
+              <option value="8Spd">8Spd</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <label for="info">Additional info</label>
+              <textarea class="form-control info" rows="4" id="comment"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div id="dropzone" class="dropzone">
+                <div class="well well-drop-zone">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <div class="imagePreview">
+
+              </div>
+            </div>
+          </div>
+          <input class="btn btn-success center-block" type="submit" name="name" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</template>

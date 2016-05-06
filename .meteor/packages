@@ -25,3 +25,8 @@ useraccounts:bootstrap
 useraccounts:iron-routing
 pcel:loading
 natestrauser:font-awesome
+reactive-var
+cfs:standard-packages
+cfs:gridfs
+chrismbeckett:toastr
+dbarrett:dropzonejs

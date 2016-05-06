@@ -2,6 +2,8 @@ Session.set("type","");
 Session.set("condition","");
 Session.set("transmission","");
 Session.set("speeds","");
+Session.set("cylinders","");
+Session.set("fuel","");
 
 Template.homeIndex.helpers({
   ads : function () {
@@ -9,7 +11,9 @@ Template.homeIndex.helpers({
       bodyType:Session.get("type"),
       condition: Session.get("condition"),
       transmission: Session.get("transmission"),
-      speeds: Session.get("speeds")
+      speeds: Session.get("speeds"),
+      cylinders: Session.get("cylinders"),
+      fuelType: Session.get("fuel")
     };
     var query = {};
     for(var i in filters){
@@ -32,5 +36,7 @@ Template.homeIndex.events({
     Session.set("condition",$(".condition").val());
     Session.set("transmission",$(".transmission").val());
     Session.set("speeds",$(".speeds").val());
+    Session.set("cylinders",$(".cylinders").val());
+    Session.set("fuel",$(".fuel").val());
   }
 });

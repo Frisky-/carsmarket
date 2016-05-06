@@ -12,3 +12,7 @@
 .product:hover p{
   color:white;
 }
+.addAd {
+  padding-top: 8px !important;
+  padding-bottom: 0px !important;
+}

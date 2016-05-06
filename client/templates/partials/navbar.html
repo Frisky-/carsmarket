@@ -14,13 +14,14 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="/">Home</a></li>
           <li><a href="about">About</a></li>
-          <li><a href="contact">Contact</a></li>
+          <li><a href="contacts">Contact</a></li>
           {{#if currentUser}}
           <li><a href="profile">Profile</a></li>
           {{/if}}
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          {{> atNavButton}}
+          <li><a class="addAd" href="createAd"><button class="btn btn-success" type="button" name="button">Create Ad</button></a></li>
+          <li>{{> atNavButton}}</li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
