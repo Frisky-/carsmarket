@@ -1,4 +1,6 @@
 var models;
+var _deps = new Deps.Dependency;
+var images = [];
 
 Session.set("brand","");
 Session.set("model","");
@@ -12,7 +14,6 @@ Template.createAd.helpers({
   getModel: function () {
     for (var i in brands.makes){
       if(brands.makes[i].name === Session.get("brand")){
-        // models = brands.makes[i].models;
         Session.set("getYears",brands.makes[i].models);
         return brands.makes[i].models;
       }
@@ -26,20 +27,20 @@ Template.createAd.helpers({
         }
       }
     }
-    // if (models) {
-    //   for(var i in models){
-    //     if(models[i].name === Session.get("model")){
-    //       return models[i].years;
-    //     }
-    //   }
-    // }
   },
   getStyles: function() {
         if(Session.get("styles")){
           var styles = asyncValue.get().data.styles;
           return styles;
         }
-  }
+  },getImages: function () {
+    _deps.depend();
+    if (images.length !== 0) {
+      var ids = [];
+      var asd = Images.find({ _id: { $in: images } });
+      return asd;
+    }
+  },
 });
 Tracker.autorun(function() {
   if (Session.get('model') && Session.get("brand") && Session.get("year") ) {
@@ -56,7 +57,6 @@ Tracker.autorun(function() {
   }
 });
 
-
 Template.createAd.events({
   'change .brand': function () {
     Session.set("brand",$(".brand").val());
@@ -72,9 +72,25 @@ Template.createAd.events({
     Session.set("year",$(".year").val());
     Session.set("styles","");
   },
+   'dropped #dropzone': function(e) {
+     FS.Utility.eachFile(e, function(file) {
+        var newFile = new FS.File(file);
+        Images.insert(newFile, function (error, fileObj) {
+          if (error) {
+            toastr.error("Upload failed... please try again.");
+          } else {
+            toastr.success('Upload succeeded!');
+            images.push(fileObj._id);
+            _deps.changed();
+          }
+      });
+    });
+  },
   'submit .createAdForm' : function(e) {
     e.preventDefault();
+    images = [];
     Ads.insert({
+      createdBy: Meteor.userId(),
       brand:$(".brand").val(),
       model:$(".model").val(),
       year:$(".year").val(),
@@ -85,21 +101,15 @@ Template.createAd.events({
       mileage:$(".miles").val(),
       fuel:$(".fuel").val(),
       speeds:$(".speeds").val(),
-      info:$(".info").val()
+      info:$(".info").val(),
+      images:images
+    },function (err,success) {
+      if(err){
+        console.log(err);
+      }else{
+        console.log("success");
+        Router.go("/");
+      }
     });
-  },
-  //todo
-  //  'dropped #dropzone': function(e) {
-  //    FS.Utility.eachFile(e, function(file) {
-  //       var newFile = new FS.File(file);
-  //       Images.insert(newFile, function (error, fileObj) {
-  //         if (error) {
-  //           toastr.error("Upload failed... please try again.");
-  //         } else {
-  //           toastr.success('Upload succeeded!');
-  //           $(".imagePreview").html("<img src=" + fileObj.url() + ">")
-  //         }
-  //     });
-  //   });
-  // }
+  }
 });

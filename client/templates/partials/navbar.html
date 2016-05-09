@@ -20,7 +20,9 @@
           {{/if}}
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          {{#if currentUser}}
           <li><a class="addAd" href="createAd"><button class="btn btn-success" type="button" name="button">Create Ad</button></a></li>
+          {{/if}}
           <li>{{> atNavButton}}</li>
         </ul>
       </div><!--/.nav-collapse -->
