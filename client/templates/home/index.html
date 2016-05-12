@@ -7,20 +7,27 @@
     </div>
     <div class="col-md-8">
       <div class="row">
-        {{#each ads}}
-          <div class="col-md-4">
+        {{#each getAds}}
+          <div class="col-md-4 ads">
+            <a href="/ad/{{_id}}">
             <div class="product">
-              <img class="productImage img-thumbnail img-responsive" src="{{image}}" alt="" />
+              {{#if images}}
+                <img class="productImage img-thumbnail img-responsive center-block" src="{{getImage(images.[0])}}" alt="" />
+              {{else}}
+                <img class="productImage img-thumbnail img-responsive center-block" src="carDefault.png" alt="" />
+              {{/if}}
               <div class="productName">
-                <p class="text-center">{{name}}</p>
+                <p class="text-center">{{brand}}</p>
+                <p class="text-center">{{model}}</p>
               </div>
               <div class="productYear">
                 <p>Year:{{year}}</p>
               </div>
               <div class="productPrice">
-                <p>Price: <i class="fa fa-money" aria-hidden="true"></i> {{price}}</p>
+                <p>Price: <i class="fa fa-money" aria-hidden="true"></i> {{currency(price)}}</p>
               </div>
             </div>
+            </a>
           </div>
         {{/each}}
       </div>

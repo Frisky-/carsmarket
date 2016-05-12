@@ -1,19 +1,14 @@
-Session.set("type","");
-Session.set("condition","");
-Session.set("transmission","");
-Session.set("speeds","");
-Session.set("cylinders","");
-Session.set("fuel","");
-
 Template.homeIndex.helpers({
-  ads : function () {
+  getAds : function () {
     var filters = {
-      bodyType:Session.get("type"),
+      brand:Session.get("brand"),
+      model:Session.get("model"),
       condition: Session.get("condition"),
       transmission: Session.get("transmission"),
       speeds: Session.get("speeds"),
       cylinders: Session.get("cylinders"),
-      fuelType: Session.get("fuel")
+      fuel: Session.get("fuel"),
+      mileage: Session.get("mileage")
     };
     var query = {};
     for(var i in filters){
@@ -26,17 +21,18 @@ Template.homeIndex.helpers({
       }else{
         return Ads.find();
       }
+  },
+});
+Template.homeIndex.helpers({
+  getImage:function (id) {
+    if(id){
+      if (Images.findOne({_id:id})) {
+        return Images.findOne({_id:id}).url();
+      }
+    }
   }
 });
 
-Template.homeIndex.events({
-  'change form' : function (event) {
-    event.preventDefault();
-    Session.set("type",$(".type").val());
-    Session.set("condition",$(".condition").val());
-    Session.set("transmission",$(".transmission").val());
-    Session.set("speeds",$(".speeds").val());
-    Session.set("cylinders",$(".cylinders").val());
-    Session.set("fuel",$(".fuel").val());
-  }
+Template.registerHelper("currency",function (currency) {
+  return accounting.formatMoney(currency, "€", 2, ".", ",");
 });

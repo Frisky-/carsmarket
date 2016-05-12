@@ -1,42 +1,45 @@
-Session.set("type","");
-Session.set("condition","");
-Session.set("transmission","");
-Session.set("speeds","");
-Session.set("cylinders","");
-Session.set("fuel","");
-
-Template.homeIndex.helpers({
-  ads : function () {
-    var filters = {
-      bodyType:Session.get("type"),
-      condition: Session.get("condition"),
-      transmission: Session.get("transmission"),
-      speeds: Session.get("speeds"),
-      cylinders: Session.get("cylinders"),
-      fuelType: Session.get("fuel")
-    };
-    var query = {};
-    for(var i in filters){
-      if(filters[i] !== ""){
-        query[i] = filters[i];
-      }
+Template.filters.onRendered(function () {
+  Session.set("condition","");
+  Session.set("model","");
+  Session.set("transmission","");
+  Session.set("speeds","");
+  Session.set("cylinders","");
+  Session.set("fuel","");
+  Session.set("mileage","");
+  Session.set("brand","");
+  console.log("onRendered");
+});
+Template.filters.helpers({
+  getBrands: function () {
+    var brands = [];
+    var data = Ads.find().fetch();
+    for (var key in data){
+      brands.push(data[key].brand);
     }
-      if (!jQuery.isEmptyObject(query)) {
-        return Ads.find({$and: [query]});
-      }else{
-        return Ads.find();
+    return _.uniq(brands);
+  },
+  getModels: function () {
+    if(Session.get("brand")){
+      var models = [];
+      var data = Ads.find({brand:Session.get("brand")}).fetch();
+      for (var key in data) {
+        models.push(data[key].model);
       }
+      return _.uniq(models);
+    }
   }
 });
 
-Template.homeIndex.events({
+Template.filters.events({
   'change form' : function (event) {
     event.preventDefault();
-    Session.set("type",$(".type").val());
+    Session.set("brand",$(".brand").val());
+    Session.set("model",$(".model").val());
     Session.set("condition",$(".condition").val());
     Session.set("transmission",$(".transmission").val());
     Session.set("speeds",$(".speeds").val());
     Session.set("cylinders",$(".cylinders").val());
     Session.set("fuel",$(".fuel").val());
+    Session.set("mileage",$(".mileage").val());
   }
 });

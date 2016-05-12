@@ -30,3 +30,7 @@ cfs:standard-packages
 cfs:gridfs
 chrismbeckett:toastr
 raix:ui-dropped-event
+themeteorchef:jquery-validation
+risul:accounting
+mrt:fancybox
+momentjs:moment

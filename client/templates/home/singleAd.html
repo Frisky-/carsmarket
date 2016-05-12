@@ -1,0 +1,74 @@
+<template name="singleAd">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="jumbotron">
+        <h1 class="text-center">{{brand}}</h1>
+        <h3 class="text-center">{{model}}</h3>
+        <div class="well">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="">
+                Style: <b>{{style}}</b>
+              </div>
+              <div class="">
+                Fuel type: <b>{{fuel}}</b>
+              </div>
+              <div class="">
+                Mileage: <b>{{mileage}}</b>
+              </div>
+              <div class="">
+                Speeds: <b>{{speeds}}</b>
+              </div>
+              <div class="">
+                Phone: <b>{{info}}</b>
+              </div>
+              <div class="">
+                Email: <b>{{getUser.emails.[0].address}}</b>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="">
+                Condition: <b>{{condition}}</b>
+              </div>
+              <div class="">
+                Cylinders: <b>{{cylinders}}</b>
+              </div>
+              <div class="">
+                Price: <b>{{currency(price)}}</b>
+              </div>
+              <div class="">
+                Transmission: <b>{{transmission}}</b>
+              </div>
+              <div class="">
+                Year: <b>{{year}}</b>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              Createby: <b>{{getUser.username}}</b> at <b>{{dateFormat(createdAt)}}</b>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="">
+                Info: <b>{{info}}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          {{#if images}}
+            {{#each getImages}}
+            <div class="col-md-4">
+              <a class="fancybox" rel="gallery1" href="{{url}}" title="">
+                <img class="img-responsive " src="{{url}}" alt="" />
+              </a>
+            </div>
+            {{/each}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

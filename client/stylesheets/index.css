@@ -16,3 +16,15 @@
   padding-top: 8px !important;
   padding-bottom: 0px !important;
 }
+.image {
+  width: 160px;
+  height: 100px;
+}
+.productImage {
+  width: 238px;
+  height: 178px;
+}
+.ads a{
+  text-decoration: none;
+  color:black;
+}

@@ -2,41 +2,42 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="row">
-        <form class="createAdForm">
+        <form class="createAdForm required" id="adForm">
           <div class="col-md-6 left">
-            <select class="brand form-control" name="">
-              <option selected disabled>Brand</option>
+            <select class="brand form-control" name="brand" required>
+              <option value="" selected disabled>Brand</option>
               {{#each getMakes}}
               <option value="{{name}}">{{name}}</option>
               {{/each}}
             </select>
-            <select class="model form-control" name="">
-              <option selected disabled>Model</option>
+            <select class="model form-control" name="model" required>
+              <option value="" selected disabled>Model</option>
               {{#each getModel}}
               <option value="{{name}}">{{name}}</option>
               {{/each}}
             </select>
-            <select class="year form-control" name="">
-              <option selected disabled>Year</option>
+            <select class="year form-control" name="year" required>
+              <option value="" selected disabled>Year</option>
               {{#each getYear}}
               <option value="{{year}}">{{year}}</option>
               {{/each}}
             </select>
-            <select class="styles form-control" name="">
-              <option selected disabled>Style</option>
+            <select class="styles form-control" name="styles" required>
+              <option value="" selected disabled>Style</option>
               {{#each getStyles}}
               <option value="{{name}}">{{name}}</option>
               {{/each}}
             </select>
-            <select class="transmission form-control" name="">
-              <option selected disabled>Transmission</option>
+            <select class="transmission form-control" name="transmission" required>
+              <option value="" selected disabled>Transmission</option>
               <option value="Manual">Manual</option>
               <option value="Automatic">Automatic</option>
             </select>
+            <input class="form-control price" type="text" name="price" placeholder="Price" required>
           </div>
           <div class="col-md-6 right">
-            <select class="cylinders form-control" name="">
-              <option selected disabled>Cylinders</option>
+            <select class="cylinders form-control"  name="cylinders" required>
+              <option value="" selected disabled>Cylinders</option>
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
@@ -45,13 +46,13 @@
               <option value="12">12</option>
               <option value="16">16</option>
             </select>
-            <select class="condition form-control" name="">
-              <option selected disabled>Condition</option>
+            <select class="condition form-control" name="condition" required>
+              <option value="" selected disabled>Condition</option>
               <option value="New">New</option>
               <option value="Used">Used</option>
             </select>
-            <select class="miles form-control" name="">
-              <option selected disabled>Mileage</option>
+            <select class="miles form-control" name="miles" required>
+              <option value="" selected disabled>Mileage</option>
               <option value="15000">Under 15,000</option>
               <option value="30000">Under 30,000</option>
               <option value="45000">Under 45,000</option>
@@ -61,16 +62,16 @@
               <option value="150000">Under 150,000</option>
               <option value="200000">Over 200,000</option>
             </select>
-            <select class="fuel form-control" name="">
-              <option selected disabled>Fuel</option>
+            <select class="fuel form-control" name="fuel" required>
+              <option value="" selected disabled>Fuel</option>
               <option value="Petrol">Petrol</option>
               <option value="Diesel">Diesel</option>
               <option value="Gas">Gas</option>
               <option value="Electric">Electric</option>
               <option value="Hybrid">Hybrid</option>
             </select>
-            <select class="speeds form-control" name="">
-              <option selected disabled>Number Of Speeds</option>
+            <select class="speeds form-control" name="speeds" required>
+              <option value="" selected disabled>Number Of Speeds</option>
               <option value="3Spd">3Spd</option>
               <option value="4Spd">4Spd</option>
               <option value="5Spd">5Spd</option>
@@ -78,11 +79,12 @@
               <option value="7Spd">7Spd</option>
               <option value="8Spd">8Spd</option>
             </select>
+            <input class="form-control phone" type="text" name="phone" placeholder="Phone number for contacts" required>
           </div>
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
               <label for="info">Additional info</label>
-              <textarea class="form-control info" rows="4" id="comment"></textarea>
+              <textarea class="form-control info" name="info" rows="4" id="comment" required></textarea>
             </div>
           </div>
           <div class="row">
@@ -95,11 +97,12 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
-              {{#each getImages}}
-                <img class="thumbnail" src="{{url}}" alt="" />
-              {{/each}}
+            {{#each getImages}}
+            <div class="col-xs-4">
+                <img class="thumbnail image" src="{{url}}" alt="" />
+                <button class="btn btn-danger js-deleteImage" type="button" name="button">Delete</button>
             </div>
+            {{/each}}
           </div>
           <input class="btn btn-success center-block" type="submit" name="name" value="Submit">
         </form>

@@ -2,15 +2,16 @@
   <form class="filterForm" action="index.html" method="post">
     <div class="col-md-6">
       <div class="vehicleType">
-        <p>Type</p>
-          <select class="form-control type" name="">
+        <span class="label label-default center-block">Brand</span>
+          <select class="form-control brand" name="">
             <option value="">all</option>
-            <option value="Sedan">Sedan</option>
-            <option value="Truck">Truck</option>
+            {{#each getBrands}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
           </select>
       </div>
       <div class="vehicleTransmission">
-        <p>Transmission</p>
+          <span class="label label-default center-block">Transmission</span>
           <select class="form-control transmission" name="">
             <option value="">all</option>
             <option value="Manual">Manual</option>
@@ -18,7 +19,7 @@
           </select>
       </div>
       <div class="vehicleSpeeds">
-        <p>Number of speeds</p>
+          <span class="label label-default center-block">Speeds</span>
           <select class="form-control speeds" name="">
             <option value="">all</option>
             <option value="3Spd">3Spd</option>
@@ -29,10 +30,34 @@
             <option value="8Spd">8Spd</option>
           </select>
       </div>
+      <div class="vehicleMileage">
+        <span class="label label-default center-block">Mileage</span>
+        <select class="form-control mileage" name="">
+          <option value="">all</option>
+          <option value="15000">Under 15,000</option>
+          <option value="30000">Under 30,000</option>
+          <option value="45000">Under 45,000</option>
+          <option value="60000">Under 60,000</option>
+          <option value="75000">Under 75,000</option>
+          <option value="100000">Under 100,000</option>
+          <option value="150000">Under 150,000</option>
+          <option value="200000">Over 200,000</option>
+        </select>
+      </div>
     </div>
     <div class="col-md-6">
+      <div class="vehicleModel">
+        <!-- <p>Model</p> -->
+        <span class="label label-default center-block">Models</span>
+        <select class="form-control model" name="model">
+          <option value="">all</option>
+          {{#each getModels}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
       <div class="vehicleCondtion">
-        <p>Condition</p>
+        <span class="label label-default center-block">Condition</span>
         <select class="form-control condition" name="">
           <option value="">all</option>
           <option value="New">New</option>
@@ -40,7 +65,7 @@
         </select>
       </div>
       <div class="vehicleCylinders">
-        <p>Number of cylinders</p>
+        <span class="label label-default center-block">Cylinders</span>
         <select class="form-control cylinders" name="">
           <option value="">all</option>
           <option value="4">4</option>
@@ -53,7 +78,7 @@
         </select>
       </div>
       <div class="vehicleFuel">
-        <p>Fuel type</p>
+        <span class="label label-default center-block">Fuel</span>
         <select class="form-control fuel" name="">
           <option value="">all</option>
           <option value="Petrol">petrol</option>

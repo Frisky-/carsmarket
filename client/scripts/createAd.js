@@ -7,6 +7,9 @@ Session.set("model","");
 Session.set("year","");
 Session.set("styles","");
 
+Template.createAd.onRendered(function () {
+  $(".createAdForm").validate();
+})
 Template.createAd.helpers({
   getMakes: function () {
     return brands.makes;
@@ -36,7 +39,6 @@ Template.createAd.helpers({
   },getImages: function () {
     _deps.depend();
     if (images.length !== 0) {
-      var ids = [];
       var asd = Images.find({ _id: { $in: images } });
       return asd;
     }
@@ -88,7 +90,6 @@ Template.createAd.events({
   },
   'submit .createAdForm' : function(e) {
     e.preventDefault();
-    images = [];
     Ads.insert({
       createdBy: Meteor.userId(),
       brand:$(".brand").val(),
@@ -102,6 +103,9 @@ Template.createAd.events({
       fuel:$(".fuel").val(),
       speeds:$(".speeds").val(),
       info:$(".info").val(),
+      price:$(".price").val(),
+      number:$(".number").val(),
+      createdAt: new Date(),
       images:images
     },function (err,success) {
       if(err){
@@ -109,6 +113,15 @@ Template.createAd.events({
       }else{
         console.log("success");
         Router.go("/");
+      }
+    });
+  },
+  "click .js-deleteImage" : function (e) {
+    Images.remove(this._id,function (err,success) {
+      if(err){
+        console.log(err);
+      }else{
+        toastr.error('Image removed');
       }
     });
   }
