@@ -19,7 +19,7 @@ Template.homeIndex.helpers({
       if (!jQuery.isEmptyObject(query)) {
         return Ads.find({$and: [query]});
       }else{
-        return Ads.find();
+        return Ads.find({},{sort:{createdAt:-1}});
       }
   },
   getImage:function (id) {

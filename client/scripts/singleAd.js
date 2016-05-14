@@ -1,5 +1,6 @@
 Template.singleAd.helpers({
   getImages: function () {
+    Meteor.subscribe("getImages");
     return Images.find({ _id: { $in: this.images } });
   },
   getUser: function () {
@@ -11,11 +12,12 @@ Template.singleAd.helpers({
     return moment(date).format("MMM Do YYYY");
   }
 });
-
 Template.singleAd.onRendered(function(){
-    this.$('.fancybox').fancybox({
-      type:"image",
-      openEffect	: 'none',
-  		closeEffect	: 'none'
-    });
+    $('a[rel=adImages]').fancybox();
+});
+
+Template.singleAd.events({
+  'click a[rel=adImages]' : function(e){
+      e.preventDefault();
+  }
 });

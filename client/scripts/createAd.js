@@ -9,7 +9,7 @@ Session.set("styles","");
 
 Template.createAd.onRendered(function () {
   $(".createAdForm").validate();
-})
+});
 Template.createAd.helpers({
   getMakes: function () {
     return brands.makes;
@@ -39,7 +39,9 @@ Template.createAd.helpers({
   },getImages: function () {
     _deps.depend();
     if (images.length !== 0) {
+      Meteor.subscribe("getImages");
       var asd = Images.find({ _id: { $in: images } });
+      console.log(asd);
       return asd;
     }
   },
@@ -90,7 +92,7 @@ Template.createAd.events({
   },
   'submit .createAdForm' : function(e) {
     e.preventDefault();
-    Ads.insert({
+    var query = {
       createdBy: Meteor.userId(),
       brand:$(".brand").val(),
       model:$(".model").val(),
@@ -107,7 +109,8 @@ Template.createAd.events({
       number:$(".number").val(),
       createdAt: new Date(),
       images:images
-    },function (err,success) {
+    };
+    Meteor.call('submitAd',query,function (err,success) {
       if(err){
         console.log(err);
       }else{
