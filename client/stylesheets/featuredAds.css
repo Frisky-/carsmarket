@@ -1,0 +1,22 @@
+.mostViewed{
+  border:1px solid black;
+  border-radius: 2%;
+  margin:15px 0px;
+  background-color:white;
+  box-shadow: rgb(25, 19, 19) 1px 1px 3px;
+}
+.featuredAd a {
+  text-decoration: none;
+  color:black
+}
+.featuredAd a:hover {
+  color:white;
+}
+.featuredAd {
+  border:1px solid black;
+  transition: background-color 0.5s;
+  padding-bottom: 10px; 
+}
+.featuredAd:hover {
+    background-color:#222222
+}

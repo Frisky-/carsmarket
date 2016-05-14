@@ -1,0 +1,29 @@
+<template name="featuredAds">
+
+  <div class="row mostViewed">
+    <h2 class="text-center">Most viewed</h2>
+    {{#each getMostViewed}}
+    <div class="col-md-12 featuredAd">
+      <a href="/ad/{{_id}}">
+        <div class="text-center">
+          {{brand}}
+        </div>
+        <div class="text-center">
+          {{model}}
+        </div>
+        {{#if images}}
+          <img class="featuredAdsImage img-thumbnail img-responsive center-block" src="{{getImage(images.[0])}}" alt="" />
+        {{else}}
+          <img class="featuredAdsImage img-thumbnail img-responsive center-block" src="carDefault.png" alt="" />
+        {{/if}}
+        <div class="text-center">
+          Year: {{year}}
+        </div>
+        <div class="text-center">
+          Price: {{currency(price)}}
+        </div>
+      </a>
+    </div>
+    {{/each}}
+  </div>
+</template>

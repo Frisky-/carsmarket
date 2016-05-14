@@ -8,3 +8,14 @@ Meteor.methods({
       return !!Accounts.findUserByEmail(email);
   }
 });
+
+Meteor.methods({
+  "changeUsername" : function (id,username) {
+    return Meteor.users.update({_id:id},{$set:{username:username}});
+  }
+});
+Meteor.methods({
+  "changeEmail" : function (id,email) {
+    return Meteor.users.update({_id:id},{$set:{"emails.0.address":email}});
+  }
+});

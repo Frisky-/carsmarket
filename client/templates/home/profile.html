@@ -1,8 +1,61 @@
 <template name="profile">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <a href="change-password"><button type="submit" class="at-btn submit btn btn-md btn-block btn-default" id="at-btn">Change your password</button></a>
-          <button type="button" name="button"><a href="change-password">reset password</a></button>
+        <div class="col-md-6 col-md-offset-4">
+          <a href="change-password"><button type="submit" class="at-btn submit btn btn-md btn-default" id="at-btn">Change your password</button></a>
         </div>
+    </div>
+    <form class="editProfileForm">
+      <div class="row">
+        <div class="col-md-3 col-md-offset-4 changeMail">
+            <label for="changeMail">Change your email</label>
+            <input class="email form-control" type="email" name="changeMail" placeholder="Enter your new email" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-md-offset-4 changeMail">
+          <label for="changeUsername">Change your username</label>
+          <input class="changeUsername form-control" minlength="6" type="text" name="changeUsername" placeholder="Enter your new username">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-4">
+          <button class="btn btn-small btn-success js-editProfile" type="button" name="button">Edit</button>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron">
+          <h2 class="text-center">Your ads</h2>
+          <div class="row">
+            {{#each getUserAds}}
+            <div class="col-md-6">
+              <div class="product">
+                <a href="/ad/{{_id}}">
+                  {{#if images}}
+                    <img class="productImage img-thumbnail img-responsive center-block" src="{{getImage(images.[0])}}" alt="" />
+                  {{else}}
+                    <img class="productImage img-thumbnail img-responsive center-block" src="carDefault.png" alt="" />
+                  {{/if}}
+                  <div class="productName">
+                    <p class="text-center">{{brand}}</p>
+                    <p class="text-center">{{model}}</p>
+                  </div>
+                  <div class="productYear">
+                    <p>Year:{{year}}</p>
+                  </div>
+                  <div class="productPrice">
+                    <p>Price: <i class="fa fa-money" aria-hidden="true"></i> {{currency(price)}}</p>
+                  </div>
+                </a>
+              </div>
+              <button class="btn btn-danger btn-md js-deleteAd" type="button" name="button">Delete ad</button>
+            </div>
+            {{else}}
+              <h3 class="text-center">You haven't poseted ads yet.</h3>
+            {{/each}}
+          </div>
+        </div>
+      </div>
     </div>
 </template>

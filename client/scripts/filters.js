@@ -7,7 +7,6 @@ Template.filters.onRendered(function () {
   Session.set("fuel","");
   Session.set("mileage","");
   Session.set("brand","");
-  console.log("onRendered");
 });
 Template.filters.helpers({
   getBrands: function () {

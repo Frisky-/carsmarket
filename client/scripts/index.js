@@ -22,15 +22,13 @@ Template.homeIndex.helpers({
         return Ads.find();
       }
   },
-});
-Template.homeIndex.helpers({
   getImage:function (id) {
     if(id){
       if (Images.findOne({_id:id})) {
         return Images.findOne({_id:id}).url();
       }
     }
-  }
+  },
 });
 
 Template.registerHelper("currency",function (currency) {
