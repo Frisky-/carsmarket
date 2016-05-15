@@ -20,5 +20,8 @@ Meteor.methods({
      if(ad.createdBy === Meteor.userId()){
        return Ads.remove(ad._id);
      }
+   },
+   "addViews" : function (id) {
+     return Ads.update({_id:id},{$inc:{views:1}});
    }
  });

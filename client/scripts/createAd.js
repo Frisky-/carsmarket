@@ -106,7 +106,7 @@ Template.createAd.events({
       speeds:$(".speeds").val(),
       info:$(".info").val(),
       price:$(".price").val(),
-      number:$(".number").val(),
+      phone:$(".phone").val(),
       createdAt: new Date(),
       images:images
     };

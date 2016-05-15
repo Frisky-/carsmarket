@@ -48,7 +48,7 @@ Template.profile.events({
     e.preventDefault();
     var images = Ads.find({_id:this._id}).fetch()[0].images;
     console.log(this);
-    Meteor.call("removeAd",this)
+    Meteor.call("removeAd",this);
     if (images) {
       for (var i = 0; i < images.length; i++) {
         Images.remove({_id:images[i]});
