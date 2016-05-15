@@ -14,6 +14,7 @@ Template.singleAd.helpers({
 });
 Template.singleAd.onRendered(function(){
     $('a[rel=adImages]').fancybox();
+    Meteor.call("addViews",this.data._id);
 });
 
 Template.singleAd.events({
