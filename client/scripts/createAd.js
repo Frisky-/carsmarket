@@ -118,6 +118,7 @@ Template.createAd.events({
         Router.go("/");
       }
     });
+    images = [];
   },
   "click .js-deleteImage" : function (e) {
     Images.remove(this._id,function (err,success) {
